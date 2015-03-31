@@ -19,6 +19,14 @@ class AgeCheck {
 		$this->possibleThemes = $this->getPossibleThemes();
 	}
 
+	/**
+	 * 
+	 * Validate an age given the birthdate, country
+	 * 
+	 * @param  str/Carbon 	$date    	Birthdate to validate
+	 * @param  str 			$country 	The country's name
+	 * @return bool          			returns null on error
+	 */
 	public function checkByDate($date,$country)
 	{
 		if (!($date instanceof Carbon)) {
@@ -35,6 +43,14 @@ class AgeCheck {
 		return $this->checkByAge($age,$country);
 	}
 
+	/**
+	 * 
+	 * Validate an age given a Country
+	 * 
+	 * @param  int 		$age     	The age, in years, to validate
+	 * @param  str 		$country 	The country's name
+	 * @return bool          		returns null on error
+	 */
 	public function checkByAge($age,$country)
 	{
 		$maxAge = $this->getAgeByCountry($country);
@@ -42,6 +58,13 @@ class AgeCheck {
 		return $maxAge != null ? ($age >= $maxAge) : null;
 	}
 
+	/**
+	 * 
+	 * Gets an age given a Country
+	 * 
+	 * @param  str 		$country 	The country's name
+	 * @return int          		The age or null if the country is not valid
+	 */
 	public function getAgeByCountry($country)
 	{
 		$ages = array();
@@ -61,6 +84,12 @@ class AgeCheck {
 		return isset($ages[$country]) ? $ages[$country] : null;
 	}
 
+	/**
+	 * 
+	 * set's the theme on which the other functions will run against
+	 * 
+	 * @param str 	$theme 		laravel type path for the theme (eg. 'majority.alcohol.spirits')
+	 */
 	public function setTheme($theme)
 	{
 		$value = array_get($this->possibleThemes, $theme);
@@ -84,6 +113,12 @@ class AgeCheck {
 		return true;
 	}
 
+	/**
+	 * 
+	 * Check the Ages folder for all the possible themes
+	 * 
+	 * @return array 	returns all the valid possibilites found
+	 */
 	private function getPossibleThemes()
 	{
 		$fileData = $this->fillArrayWithFileNodes( new \DirectoryIterator($this->themesPath) );
@@ -91,6 +126,20 @@ class AgeCheck {
 		return $fileData;
 	}
 
+	/*
+	|--------------------------------------------------------------------------
+	| Auxiliary Functions
+	|--------------------------------------------------------------------------
+	*/
+
+	/**
+	 * 
+	 * Inspects the given folder recursively for valid files/directories
+	 * 
+	 * @param  \DirectoryIterator 	$dir     	Directory object to analyze
+	 * @param  str             		$dirname 	Directory name for the current node (used for recursive calls)
+	 * @return array                     		Array with the directory structure
+	 */
 	private function fillArrayWithFileNodes(\DirectoryIterator $dir, $dirname = null)
 	{
 		$data = array();
@@ -107,6 +156,14 @@ class AgeCheck {
 		return $data;
 	}
 
+	/**
+	 * 
+	 * Checks if a string starts with...
+	 * 
+	 * @param  str 		$haystack 	the string to search for
+	 * @param  str 		$needle   	the entry to search
+	 * @return bool           	
+	 */
 	private function startsWith($haystack, $needle) {
 		// search backwards starting from haystack length characters from the end
 		return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== FALSE;
