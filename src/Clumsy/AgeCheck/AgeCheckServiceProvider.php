@@ -19,6 +19,17 @@ class AgeCheckServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('clumsy/age-check');
+
+        $this->app['agecheck'] = $this->app->share(function($app){
+										return new AgeCheck;
+								  });
+
+        // Create an Alias
+  //       $this->app->booting(function()
+		// {
+		// 	$loader = \Illuminate\Foundation\AliasLoader::getInstance();
+		// 	$loader->alias('AgeCheck', 'Clumsy\AgeCheck\Facade');
+		// });
 	}
 
 	/**
