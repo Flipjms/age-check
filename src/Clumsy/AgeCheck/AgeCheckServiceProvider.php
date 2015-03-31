@@ -25,7 +25,7 @@ class AgeCheckServiceProvider extends ServiceProvider {
 								  });
 
         // Create an Alias
-  //       $this->app->booting(function()
+		// $this->app->booting(function()
 		// {
 		// 	$loader = \Illuminate\Foundation\AliasLoader::getInstance();
 		// 	$loader->alias('AgeCheck', 'Clumsy\AgeCheck\Facade');

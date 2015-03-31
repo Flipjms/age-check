@@ -10,6 +10,6 @@
 
 return array(
 
-	'theme' => 'adult',
+	'theme' => 'majority',
 
 );

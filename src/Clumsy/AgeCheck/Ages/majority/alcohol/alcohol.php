@@ -31,7 +31,7 @@ return array(
 	'Morocco'                            => 0,
 	'Namibia'                            => 18,
 	'New Zealand'                        => 18,
-	'Norway'                             => 20,
+	'Norway'                             => 18,
 	'Pakistan'                           => -1,
 	'Palau'                              => 21,
 	'Paraguay'                           => 20,
