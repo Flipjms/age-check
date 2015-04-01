@@ -19,5 +19,5 @@
             "Clumsy\\AgeCheck\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
