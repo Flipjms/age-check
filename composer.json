@@ -12,11 +12,8 @@
         "illuminate/support": "4.1.*"
     },
     "autoload": {
-        "classmap": [
-            "src/migrations"
-        ],
         "psr-0": {
-            "Clumsy\\AgeCheck\\": "src/"
+            "Clumsy\\AgeCheck": "src/"
         }
     },
     "minimum-stability": "dev"
