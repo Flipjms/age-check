@@ -99,6 +99,26 @@ class AgeCheck {
 
 	/**
 	 * 
+	 * Gets all the countries for the current theme
+	 * 
+	 * @return Array countries's name
+	 */
+	public function getCountriesByTheme()
+	{
+		$buffer = explode('.', $this->theme);
+
+		$info = include($this->themesPath.$buffer[0].'/'.$buffer[0].'.php');
+
+		$countries = array();
+		foreach ($info as $country => $age) {
+			$countries[] = $country;
+		}
+		
+		return $countries;
+	}
+
+	/**
+	 * 
 	 * set's the theme on which the other functions will run against
 	 * 
 	 * @param str 	$theme 		laravel type path for the theme (eg. 'majority.alcohol.spirits')
