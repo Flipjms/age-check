@@ -10,6 +10,8 @@
 
 return array(
 
-	'theme' => 'majority',
-
+	'theme'        => 'majority',
+	
+	'save_session' => true,
+	
 );

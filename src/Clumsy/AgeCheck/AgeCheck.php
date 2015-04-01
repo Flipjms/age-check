@@ -1,6 +1,7 @@
 <?php namespace Clumsy\AgeCheck;
 
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
 
 use \Carbon\Carbon;
 
@@ -8,6 +9,7 @@ class AgeCheck {
 
 	protected $theme;
 	protected $possibleThemes;
+	protected $session;
 
 	protected $themesPath;
 
@@ -15,8 +17,14 @@ class AgeCheck {
 	public function __construct()
 	{
 		$this->theme = Config::get('age-check::theme');
+		$this->session = Config::get('age-check::save_session');
 		$this->themesPath = realpath(dirname(__FILE__)).'/Ages/';
 		$this->possibleThemes = $this->getPossibleThemes();
+	}
+
+	public function check()
+	{
+		return Session::get('clumsy.age_check',false);
 	}
 
 	/**
@@ -39,6 +47,11 @@ class AgeCheck {
 
 		$now = Carbon::now();
 		$age = $now->diffInYears($date);
+
+		$result = $this->checkByAge($age,$country);
+		if ($this->session) {
+			Session::push('clumsy.age_check',$result);
+		}
 
 		return $this->checkByAge($age,$country);
 	}
