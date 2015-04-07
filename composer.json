@@ -1,10 +1,11 @@
 {
     "name": "clumsy/age-check",
-    "description": "",
+    "description": "An age checker for Laravel",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Tomas Buteler",
-            "email": "tbuteler@gmail.com"
+            "name": "Filipe Santos",
+            "email": "flipjms@gmail.com"
         }
     ],
     "require": {
