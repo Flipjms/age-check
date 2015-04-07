@@ -17,5 +17,10 @@
             "Clumsy\\AgeCheck": "src/"
         }
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.2-dev"
+        }
+    },
     "minimum-stability": "dev"
 }
