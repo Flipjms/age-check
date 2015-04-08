@@ -50,7 +50,7 @@ class AgeCheck {
 
 		$result = $this->checkByAge($age,$country);
 		if ($this->session) {
-			Session::push('clumsy.age_check',$result);
+			Session::put('clumsy.age_check',$result);
 		}
 
 		return $this->checkByAge($age,$country);
