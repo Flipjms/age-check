@@ -68,6 +68,10 @@ class AgeCheck {
 	{
 		$maxAge = $this->getAgeByCountry($country);
 
+		if ($maxAge == -1) {
+			return false;
+		}
+
 		return $maxAge != null ? ($age >= $maxAge) : null;
 	}
 
