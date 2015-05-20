@@ -124,6 +124,7 @@ return array(
 	'Swaziland'                          => 21,
 	'Sweden'                             => 18,
 	'Switzerland'                        => 18,
+	'Syria'		                         => 18,
 	'Thailand'                           => 20,
 	'Togo'                               => 18,
 	'Tonga'                              => 18,
