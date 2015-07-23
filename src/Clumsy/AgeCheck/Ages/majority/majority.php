@@ -4,6 +4,7 @@ return array(
 
 	'Albania'                            => 18,
 	'Algeria'                            => 19,
+	'Angola'	                         => 18,
 	'Argentina'                          => 18,
 	'Armenia'                            => 18,
 	'Australia'                          => 18,

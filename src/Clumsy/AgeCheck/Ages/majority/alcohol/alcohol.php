@@ -35,7 +35,6 @@ return array(
 	'Pakistan'                           => -1,
 	'Palau'                              => 21,
 	'Paraguay'                           => 20,
-	'Portugal'							 => 16,
 	'Qatar'                              => -1,
 	'Samoa'                              => 21,
 	'Sierra Leone'                       => 0,
