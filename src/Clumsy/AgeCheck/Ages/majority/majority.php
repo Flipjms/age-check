@@ -110,6 +110,7 @@ return array(
 	'Peru'                               => 18,
 	'Philippines'                        => 18,
 	'Portugal'                           => 18,
+	'Poland'                             => 18,
 	'Qatar'                              => 18,
 	'Russia'                             => 18,
 	'Samoa'                              => 18,
