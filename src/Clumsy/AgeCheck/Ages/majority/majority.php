@@ -138,6 +138,7 @@ return array(
     'Turkmenistan'                       => 18,
     'Uganda'                             => 18,
     'Ukraine'                            => 18,
+    'United Kingdom'                     => 18,
     'United Arab Emirates'               => 21,
     'United States'                      => 18,
     'Uruguay'                            => 18,
