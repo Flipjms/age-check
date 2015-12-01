@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
  |--------------------------------------------------------------------------
@@ -10,8 +10,8 @@
 
 return array(
 
-	'theme'        => 'majority',
-	
-	'save_session' => true,
-	
+    'theme'        => 'majority',
+    
+    'save_session' => true,
+    
 );
