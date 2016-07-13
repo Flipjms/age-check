@@ -1,4 +1,6 @@
-<?php namespace Clumsy\AgeCheck;
+<?php 
+
+namespace Clumsy\AgeCheck;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;

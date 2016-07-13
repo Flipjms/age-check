@@ -21,11 +21,9 @@ class AgeCheckServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('clumsy/age-check');
-
-        $this->app['agecheck'] = $this->app->share(function ($app) {
-                                        return new AgeCheck;
-        });
+        $this->publishes([
+            __DIR__.'/config/config.php' => config_path('clumsy/age-check.php'),
+        ], 'config');
     }
 
     /**
@@ -35,7 +33,11 @@ class AgeCheckServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(AgeCheck::class, function ($app) {
+            return new AgeCheck();
+        });
+        
+        $this->mergeConfigFrom(__DIR__.'/config/config.php', 'clumsy.age-check');
     }
 
     /**
@@ -45,6 +47,6 @@ class AgeCheckServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return array(AgeCheck::class);
     }
 }
