@@ -40,7 +40,6 @@ return array(
     'Sierra Leone'                       => 0,
     'Singapore'                          => 18,
     'Solomon Islands'                    => 21,
-    'Spain (Asturias)'                   => 16,
     'Sri Lanka'                          => 21,
     'Swaziland'                          => 18,
     'Tonga'                              => 21,
