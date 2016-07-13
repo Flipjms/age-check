@@ -1,10 +1,15 @@
 <?php
 
-namespace Clumsy\Assets\Http\Middleware;
+namespace Clumsy\AgeCheck\Http\Middleware;
 
+use AgeCheck;
+use Cookie;
 use Closure;
+use Clumsy\Utils\Facades\HTTP;
 use Illuminate\Http\Request;
+use Redirect;
 use Symfony\Component\HttpFoundation\Response;
+use URL;
 
 /**
 * 
@@ -13,14 +18,13 @@ class ValidateAge
 {
     public function handle($request, Closure $next)
     {
-        if(!AgeCheck::check() && Cookie::get('agecheck') == null) {
+        if(!AgeCheck::check() && request()->cookie('agecheck') == null) {
             if (!HTTP::isCrawler()) {
-
-                if (URL::route('home') != Request::fullUrl()) {
-                    Session::put('before-age-check', Request::fullUrl());
+                if (config('clumsy.age-check.success-url') != request()->fullUrl()) {
+                    request()->session()->put('clumsy-age-check.before-url', request()->fullUrl());
                 }
 
-                return Redirect::to('age-check');
+                return redirect()->to('age-check');
             }
         }
 

@@ -2,10 +2,8 @@
 
 namespace Clumsy\AgeCheck;
 
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Session;
-
 use \Carbon\Carbon;
+use Clumsy\Utils\Facades\Geo;
 
 class AgeCheck
 {
@@ -19,15 +17,76 @@ class AgeCheck
 
     public function __construct()
     {
-        $this->theme = Config::get('age-check::theme');
-        $this->session = Config::get('age-check::save_session');
+        $this->theme = config('clumsy.age-check.theme');
+        $this->session = config('clumsy.age-check.save_session');
         $this->themesPath = realpath(dirname(__FILE__)).'/Ages/';
         $this->possibleThemes = $this->getPossibleThemes();
     }
 
     public function check()
     {
-        return Session::get('clumsy.age_check', false);
+        return request()->session()->get('clumsy-age-check.check', false);
+    }
+
+    public function selectedCountry()
+    {
+        if (request()->session()->has('clumsy-age-check.country')) {
+            return request()->session()->get('clumsy-age-check.country');
+        }
+
+        $ip = request()->getClientIp();
+
+        $country = Geo::getInfoByIp('country', $ip);
+
+        if ($country != null) {
+            request()->session()->put('clumsy-age-check.country', $country);
+        }
+
+        return $country;
+    }
+
+    protected function getCountries()
+    {
+        $themeCountries = AgeCheck::getCountriesByTheme();
+        $countries = array_combine($themeCountries, $themeCountries);
+        return [
+            'countries' => array_merge(array('' => 'Select Country'), $countries),
+            'current_country' => $this->selectedCountry(),
+        ];
+    }
+
+    protected function getDays()
+    {
+        $days = array_merge(array('DD'), range(1,31));
+        return array_combine($days, $days);
+    }
+
+    protected function getMonths()
+    {
+        $months = array_merge(array('MM'), range(1,12));
+        return array_combine($months, $months);
+    }
+
+    protected function getYears()
+    {
+        $year = (int)date('Y');
+        $years = array_merge(array('YYYY'), range($year,($year-110)));
+
+        return [
+            'year'  => $year,
+            'years' => array_combine($years, $years)
+        ];
+    }
+
+    public function getFormData()
+    {
+        $country = $this->getCountries();
+        $day = $this->getDays();
+        $month = $this->getMonths();
+        $year = $this->getYears();
+        $active = false;
+
+        return compact('country', 'day', 'month', 'year');
     }
 
     /**
@@ -53,7 +112,7 @@ class AgeCheck
 
         $result = $this->checkByAge($age, $country);
         if ($this->session) {
-            Session::put('clumsy.age_check', $result);
+            request()->session()->put('clumsy-age-check.check', $result);
         }
 
         return $this->checkByAge($age, $country);

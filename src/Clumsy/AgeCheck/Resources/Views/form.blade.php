@@ -1,29 +1,29 @@
-@extends('master')
+@extends('clumsy-age-check::master')
 
 <div class="cell age col-sm-12">
     @section('day')
-        @include('partials.day')
+        @include('clumsy-age-check::partials.day')
     @stop
     @section('month')
-        @include('partials.month')
+        @include('clumsy-age-check::partials.month')
     @stop
     @section('year')
-        @include('partials.year')
+        @include('clumsy-age-check::partials.year')
     @stop
 </div>
 
 <div class="cell contry col-sm-12">
     @section('country')
-        @include('partials.contry')
+        @include('clumsy-age-check::partials.country')
     @stop
 </div>
 
 @section('remeber_me')
     <div class="cell remeber col-sm-24">
-        @include('partials.remeber')
+        @include('clumsy-age-check::partials.remember')
     </div>
 @stop
 
 @section('submit')
-    @include('partials.submit')
+    @include('clumsy-age-check::partials.submit')
 @stop

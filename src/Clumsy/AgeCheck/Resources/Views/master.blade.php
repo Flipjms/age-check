@@ -1,5 +1,4 @@
-@form(['url' => route('check-age-check'), 'id' => 'form-agecheck'])
-
+@form(['url' => route('age-check.validateForm'), 'id' => 'form-agecheck'])
     @yield('day')
     @yield('month')
     @yield('year')
