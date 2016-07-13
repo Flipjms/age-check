@@ -125,7 +125,6 @@ return array(
     'Solomon Islands'                    => 18,
     'South Africa'                       => 18,
     'Spain'                              => 18,
-    'Spain (Asturias)'                   => 18,
     'Sri Lanka'                          => 18,
     'Swaziland'                          => 21,
     'Sweden'                             => 18,
