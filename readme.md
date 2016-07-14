@@ -1,4 +1,6 @@
 # Age-Check
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/28eac9d3570c47009bcfa5ed8a196597)](https://www.codacy.com/app/flipjms/age-check?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Flipjms/age-check&amp;utm_campaign=Badge_Grade)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5b831215-67f8-48f0-9a84-a1642c280481/mini.png)](https://insight.sensiolabs.com/projects/5b831215-67f8-48f0-9a84-a1642c280481)
 
 A package to help create an age-check verification.
 
