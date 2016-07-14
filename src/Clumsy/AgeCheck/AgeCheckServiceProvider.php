@@ -39,7 +39,7 @@ class AgeCheckServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('agecheck', function ($app) {
+        $this->app->bind('agecheck', function () {
             return new AgeCheck();
         });
         
