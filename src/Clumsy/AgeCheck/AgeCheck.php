@@ -25,13 +25,13 @@ class AgeCheck
 
     public function check()
     {
-        return request()->session()->get('clumsy-age-check.check', false);
+        return request()->session()->get('clumsy.age-check.check', false);
     }
 
     public function selectedCountry()
     {
-        if (request()->session()->has('clumsy-age-check.country')) {
-            return request()->session()->get('clumsy-age-check.country');
+        if (request()->session()->has('clumsy.age-check.country')) {
+            return request()->session()->get('clumsy.age-check.country');
         }
 
         $ip = request()->getClientIp();
@@ -39,7 +39,7 @@ class AgeCheck
         $country = Geo::getInfoByIp('country', $ip);
 
         if (!is_null($country)) {
-            request()->session()->put('clumsy-age-check.country', $country);
+            request()->session()->put('clumsy.age-check.country', $country);
         }
 
         return $country;
@@ -111,7 +111,7 @@ class AgeCheck
 
         $result = $this->checkByAge($age, $country);
         if ($this->session) {
-            request()->session()->put('clumsy-age-check.check', $result);
+            request()->session()->put('clumsy.age-check.check', $result);
         }
 
         return $this->checkByAge($age, $country);

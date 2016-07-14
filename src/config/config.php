@@ -9,12 +9,16 @@
  */
 
 return [
-    'theme'        => 'majority',
+    'theme'                => 'majority',
     
-    'save_session' => true,
+    'save_session'         => true,
 
-    'success-url'  => '/',
-    'fail-url'     => '/fail',
+    'success-url'          => '/',
+    'fail-url'             => '/fail',
 
-    'view' => 'clumsy-age-check::form',
+    'view'                 => 'clumsy/age-check::form',
+    
+    'prefix'               => 'age-check',
+    'middleware'           => 'web',
+    'controller-namespace' => 'Clumsy\AgeCheck\Http\Controllers',
 ];

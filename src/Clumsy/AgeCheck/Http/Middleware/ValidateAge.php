@@ -17,10 +17,10 @@ class ValidateAge
         if(!AgeCheck::check() && is_null($request->cookie('agecheck'))) {
             if (!HTTP::isCrawler()) {
                 if (config('clumsy.age-check.success-url') != $request->fullUrl()) {
-                    $request->session()->put('clumsy-age-check.before-url', $request->fullUrl());
+                    $request->session()->put('clumsy.age-check.before-url', $request->fullUrl());
                 }
 
-                return redirect()->to('age-check');
+                return redirect()->route('clumsy.age-check.validate');
             }
         }
 

@@ -26,10 +26,10 @@ class AgeCheckServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/Resources/Views' => base_path('resources/views/vendor/clumsy-age-check'),
+            __DIR__.'/Resources/Views' => base_path('resources/views/vendor/clumsy/age-check'),
         ], 'views');
 
-        $this->loadViewsFrom(__DIR__.'/Resources/Views', 'clumsy-age-check');
+        $this->loadViewsFrom(__DIR__.'/Resources/Views', 'clumsy/age-check');
     }
 
     /**
@@ -55,24 +55,27 @@ class AgeCheckServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array(AgeCheck::class);
+        return [
+            AgeCheck::class
+        ];
     }
 
     public function registerRoutes()
     {
         $this->app['router']->group([
-                'prefix'     => 'age-check',
-                'middleware' => 'web'
+                'prefix'     => config('clumsy.age-check.prefix'),
+                'middleware' => config('clumsy.age-check.middleware'),
+                'namespace'  => config('clumsy.age-check.controller-namespace'),
             ], function () {
 
                 $this->app['router']->match(['GET'], '/', [
-                    'as'   => 'age-check.validate',
-                    'uses' => 'Clumsy\AgeCheck\Http\Controllers\AgeCheckController@validate'
+                    'as'   => 'clumsy.age-check.validate',
+                    'uses' => 'AgeCheckController@ageCheck'
                 ]);
 
                 $this->app['router']->match(['POST'], '/', [
-                    'as'   => 'age-check.validateForm',
-                    'uses' => 'Clumsy\AgeCheck\Http\Controllers\AgeCheckController@validateForm'
+                    'as'   => 'clumsy.age-check.validateForm',
+                    'uses' => 'AgeCheckController@ageCheckValidateForm'
                 ]);
             }
         );
