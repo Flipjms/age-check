@@ -14,6 +14,7 @@ return [
     'save_session' => true,
 
     'success-url'  => '/',
+    'fail-url'     => '/fail',
 
-    'fail-url'     => '/fail',   
+    'view' => 'clumsy-age-check::form',
 ];

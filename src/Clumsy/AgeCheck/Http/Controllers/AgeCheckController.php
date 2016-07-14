@@ -11,7 +11,7 @@ class AgeCheckController extends Controller
 {
     public function validate()
     {
-        return view('clumsy-age-check::form', AgeCheck::getFormData());
+        return view(config('clumsy.age-check.view'), AgeCheck::getFormData());
     }
 
     public function validateForm()
