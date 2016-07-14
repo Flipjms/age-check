@@ -2,8 +2,8 @@
 
 namespace Clumsy\AgeCheck\Http\Middleware;
 
-use AgeCheck;
 use Closure;
+use Clumsy\AgeCheck\Facade as AgeCheck;
 use Clumsy\Utils\Facades\HTTP;
 use Illuminate\Http\Request;
 

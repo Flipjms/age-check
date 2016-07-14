@@ -8,14 +8,12 @@
  |
  */
 
-return array(
-
+return [
     'theme'        => 'majority',
     
     'save_session' => true,
 
     'success-url'  => '/',
 
-    'fail-url'     => '/fail',
-    
-);
+    'fail-url'     => '/fail',   
+];

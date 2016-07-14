@@ -2,7 +2,7 @@
 
 namespace Clumsy\AgeCheck\Http\Controllers;
 
-use AgeCheck;
+use Clumsy\AgeCheck\Facade as AgeCheck;
 use Clumsy\Utils\Facades\Geo;
 use Illuminate\Routing\Controller;
 use Validator;

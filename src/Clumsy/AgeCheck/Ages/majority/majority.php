@@ -1,7 +1,6 @@
 <?php
 
-return array(
-
+return [
     'Albania'                            => 18,
     'Algeria'                            => 19,
     'Angola'                             => 18,
@@ -149,5 +148,4 @@ return array(
     'Yemen'                              => 18,
     'Zambia'                             => 21,
     'Zimbabwe'                           => 18,
-
-);
+];
