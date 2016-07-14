@@ -26,7 +26,7 @@ class AgeCheckServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/Resources/Views' => base_path('resources/views/vendor/clumsy/age-check'),
+            __DIR__.'/Resources/Views' => base_path('resources/views/vendor/clumsy-age-check'),
         ], 'views');
 
         $this->loadViewsFrom(__DIR__.'/Resources/Views', 'clumsy-age-check');
