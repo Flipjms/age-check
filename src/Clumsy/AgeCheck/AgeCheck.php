@@ -38,7 +38,7 @@ class AgeCheck
 
         $country = Geo::getInfoByIp('country', $ip);
 
-        if ($country != null) {
+        if (!is_null($country)) {
             request()->session()->put('clumsy-age-check.country', $country);
         }
 
@@ -84,7 +84,6 @@ class AgeCheck
         $day = $this->getDays();
         $month = $this->getMonths();
         $year = $this->getYears();
-        $active = false;
 
         return compact('country', 'day', 'month', 'year');
     }
