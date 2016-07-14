@@ -40,6 +40,7 @@ protected $routeMiddleware = [
 ```
 
 Publish the config file:
+
     php artisan vendor:publish --provider="Clumsy\AgeCheck\AgeCheckServiceProvider" --tag="config"
 
 and edit it according to your project. Usually you want to edit the `success-url` and `fail-url` which are the urls where the user will get redirected in case of fail or success.
