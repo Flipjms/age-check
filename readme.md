@@ -31,7 +31,6 @@ After installing the Age-Check library, register the ServiceProvider in your `co
 ```
 
 Register the middleware in your `app/Http/Kernel.php` file:
-
 ```php
 protected $routeMiddleware = [
         //Other middlewares...
@@ -39,6 +38,11 @@ protected $routeMiddleware = [
         'age-check' => \Clumsy\AgeCheck\Http\Middleware\ValidateAge::class,
     ];
 ```
+
+Publish the config file:
+    php artisan vendor:publish --provider="Clumsy\AgeCheck\AgeCheckServiceProvider" --tag="config"
+
+and edit it according to your project. Usually you want to edit the `success-url` and `fail-url` which are the urls where the user will get redirected in case of fail or success.
 
 ## Usage
 
@@ -55,7 +59,9 @@ Route::group(
 );
 ```
 
-This package gives you a basic view with a basic form without styling. You should publish the views and change them to suit your needs:
+This package gives you a basic view with a basic form without styling. You should change the config file to use one of you own and use the partials views provided to help you generate the form.
+
+You can also publish the views and change them to suit your needs:
 
     php artisan vendor:publish --provider="Clumsy\AgeCheck\AgeCheckServiceProvider" --tag="views"
 
