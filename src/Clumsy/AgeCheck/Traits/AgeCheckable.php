@@ -3,7 +3,6 @@
 namespace Clumsy\AgeCheck\Traits;
 
 use Clumsy\AgeCheck\Facade as AgeCheck;
-use Clumsy\Utils\Facades\Geo;
 use Validator;
 
 trait AgeCheckable
